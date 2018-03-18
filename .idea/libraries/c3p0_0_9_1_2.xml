@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="c3p0-0.9.1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/c3p0-0.9.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/commons-beanutils-1.9.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/commons-io-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/fastjson-1.2.18.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/mssqlserver.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sqljdbc4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

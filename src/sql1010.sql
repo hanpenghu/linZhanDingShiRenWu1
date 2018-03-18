@@ -1,0 +1,1 @@
+update mf_arp set amtn_rcv=amtn where  amt=amt_rcv and (amtn<>amtn_rcv)

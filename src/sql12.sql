@@ -1,0 +1,1 @@
+delete  from mf_pos_z where os_no not in (select os_no from mf_pos)
