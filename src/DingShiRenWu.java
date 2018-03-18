@@ -133,6 +133,11 @@ public class DingShiRenWu {
 
         //
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql1);
             p.p("-------------------------------------------------------");
@@ -142,11 +147,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql2);
             p.p("-------------------------------------------------------");
@@ -156,11 +167,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql3);
             p.p("-------------------------------------------------------");
@@ -170,11 +187,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql4);
             p.p("-------------------------------------------------------");
@@ -184,11 +207,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql5);
             p.p("-------------------------------------------------------");
@@ -198,11 +227,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql6);
             p.p("-------------------------------------------------------");
@@ -212,11 +247,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql7);
             p.p("-------------------------------------------------------");
@@ -226,12 +267,18 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql8);
             p.p("-------------------------------------------------------");
@@ -241,11 +288,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql9);
             p.p("-------------------------------------------------------");
@@ -255,11 +308,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql10);
             p.p("-------------------------------------------------------");
@@ -269,11 +328,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql11);
             p.p("-------------------------------------------------------");
@@ -283,11 +348,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql2);
             p.p("-------------------------------------------------------");
@@ -297,11 +368,12 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        DbCon.closeAll(p1, null, c);
+
     }
 
 
@@ -319,6 +391,11 @@ public class DingShiRenWu {
 
         //
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql101);
             p.p("-------------------------------------------------------");
@@ -328,11 +405,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql102);
             p.p("-------------------------------------------------------");
@@ -342,11 +425,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql103);
             p.p("-------------------------------------------------------");
@@ -356,11 +445,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql104);
             p.p("-------------------------------------------------------");
@@ -370,11 +465,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql105);
             p.p("-------------------------------------------------------");
@@ -384,11 +485,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql106);
             p.p("-------------------------------------------------------");
@@ -398,11 +505,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql107);
             p.p("-------------------------------------------------------");
@@ -412,12 +525,18 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql108);
             p.p("-------------------------------------------------------");
@@ -427,11 +546,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql109);
             p.p("-------------------------------------------------------");
@@ -441,11 +566,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql1010);
             p.p("-------------------------------------------------------");
@@ -455,11 +586,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql11);
             p.p("-------------------------------------------------------");
@@ -469,11 +606,17 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         try {
+            try {
+                c = DbCon.getCon();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             p.p("-------------------------------------------------------");
             p.p(sql2);
             p.p("-------------------------------------------------------");
@@ -483,11 +626,12 @@ public class DingShiRenWu {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+            DbCon.closeAll(p1, null, c);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        DbCon.closeAll(p1, null, c);
+
     }
 
 
