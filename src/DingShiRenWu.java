@@ -504,7 +504,7 @@ public class DingShiRenWu {
         };
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
-        service.scheduleAtFixedRate(runnable1, 10, 30, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable1, 10, 120, TimeUnit.SECONDS);
         service.scheduleAtFixedRate(runnable2, 10, 2, TimeUnit.SECONDS);
     }
 
