@@ -107,6 +107,12 @@ public class DingShiRenWu {
             sql1010 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+            try {
+                resourceAsStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -4,7 +4,6 @@ public class DbCon {
     public static Connection  getCon() throws ClassNotFoundException, SQLException {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url="jdbc:sqlserver://61.177.44.218:1433;DatabaseName=DB_LZ17";
-
         //mydb为数据库
         String user="sa";
         String password="x3g5k8h!9+guanglan@";
