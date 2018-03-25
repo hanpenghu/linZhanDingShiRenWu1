@@ -38,6 +38,11 @@ public strictfp class p {
     private final static String emailPattern2 =
             "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
 
+    public static final String manyMinus="--------------------------------------------";
+    public static final String manyMinusBefore="\n--------------------------------------------";
+    public static final String manyMinusAfter="--------------------------------------------\n";
+    public static final String manyMinus2="\n--------------------------------------------\n";
+    public static final String xg="/";
     public static final String gq="_____________________RuanJianGuoQi__________________________The software has expired, please contact the supplier_____________________RuanJianGuoQi__________________________";//过期提醒
     public static final String NULL1="NULL";
     public static final String null1="null";
@@ -179,7 +184,48 @@ public strictfp class p {
     /*public static void main(String[]args){
          p.p(p.gp().sad(p.dexhx).sad(p.uuid()).sad(p.dexhx).gad());
     }*/
+    /**
+     *常用字符串组合打印或者log.error
+     * 封装
+     *
+     *
+     这种
+     *
+     *
+     * */
+    /**
+     *--------------------------------------------
+     123
+     --------------------------------------------
+     这种
+     * */
+    public static String str2Log(String str){
+        return manyMinus2+str+manyMinus2;
+    }
 
+    /**
+     *------------------log提示a-------------------
+     123
+     --------------------------------------------
+     这种
+     * */
+    public static String str2Log(String str,String msg){
+
+        int i;
+        int j;
+        if(msg.length()%2==0){
+            i=msg.length()/2;
+            j=i+1;
+        }else{
+            i=msg.length()/2+1;
+            j=i+1;
+        }
+
+        return manyMinus2.substring(0, manyMinusBefore.length() / 2-i)
+                +msg+manyMinus2.substring(manyMinusBefore.length() / 2+j)
+                +str+manyMinus2;
+
+    }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static String strNullToSpace(String s){
@@ -1611,10 +1657,69 @@ public static Object StringTypeSpace2Null(Object o) throws IllegalAccessExceptio
 //    }
 
 
+    /**
+     *java读取资源文件
+     * 读取properties文件
+     * 读取properties资源文件
+     * 资源读取不到返回null
+     * 注意   pr.getProperty("key");可以直接拿到 文件里面的东西
+     * */
 
+
+    public Properties readProp(String propertiesPath){
+        Properties pr=new Properties();
+        try {
+            pr.load(new FileReader(propertiesPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+            //有异常的话,返回一个null;
+            return null;
+        }
+//        pr.getProperty("key");
+        return pr;
+    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     *
+     *通过当前类 得到工程根目录,根路径  就是得到src路径
+     * E:/1/work_space/luxclub_jeesite/out/production/luxclub_jeesite/
+     * */
 
+    public static String srcPath(){
+        //得到的很可能是这种路径
+        //          /E:/1/work_space/luxclub_jeesite/out/production/luxclub_jeesite/
+        String s= p.class.getResource("/").getPath();
+        if(p.dy("/",s.substring(0,1))){
+            //得到这种  类所在的文件夹
+            //           E:/1/work_space/luxclub_jeesite/out/production/luxclub_jeesite/
+            s=s.substring(1);
+        }
+        return s;
+    }
+
+
+
+    /**
+     *读取项目里面某个文件夹下的txt为String
+     * 读取文本为字符串
+     * 读取文本为String
+     * @Param srcXiangDuiLuJingQianMianBuDaiGang 意思是src相对路径前面不带杠的意思
+     *
+     *
+     * 输入从src下开始的路径如下即可
+     * com/footing/website/hanhan/1
+     *
+     * 上面1是个文本文件 com文件夹是在src下面
+     * */
+
+    public static  String xiangDuiSrcDeLuJingDuTxt(String srcXiangDuiLuJingQianMianBuDaiGang){
+        try {
+            return readAllTxt(srcPath() + srcXiangDuiLuJingQianMianBuDaiGang);
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     /**
      *得到springboot打包后的jar路径
