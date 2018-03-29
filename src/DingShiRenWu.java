@@ -38,7 +38,9 @@ public class DingShiRenWu {
     String sql108 = "";
     String sql109 = "";
     String sql1010 = "";
+    //一下30秒一次
 
+    String sql1011处理单独录入的采购单无币别的="";
 
 
     public DingShiRenWu() {
@@ -105,6 +107,10 @@ public class DingShiRenWu {
             sql109 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql1010.sql");
             sql1010 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+            //一下30秒一次
+            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql1011.sql");
+            sql1011处理单独录入的采购单无币别的= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -490,8 +496,36 @@ public class DingShiRenWu {
         DbCon.closeAll(p1, null, c);
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public  void f3() {
+
+        Connection c = null;
+        PreparedStatement p1 =null;
+        try {
+            c = DbCon.getCon();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
+        //
+        try {
+            p.p("-----------------sql1011.sql--------------------------------------");
+            p.p(sql1011处理单独录入的采购单无币别的);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1011处理单独录入的采购单无币别的);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void f() {
 
         //30秒一次
@@ -508,10 +542,20 @@ public class DingShiRenWu {
                 DingShiRenWu.this.f2();
             }
         };
+
+        //30秒一次//
+        Runnable runnable3 = new Runnable() {
+            public void run() {
+                // task to run goes here
+                DingShiRenWu.this.f3();
+            }
+        };
+
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
         service.scheduleAtFixedRate(runnable1, 10, 120, TimeUnit.SECONDS);
-        service.scheduleAtFixedRate(runnable2, 10, 2, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable2, 5, 2, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable3, 1, 30, TimeUnit.SECONDS);
     }
 
 
@@ -519,6 +563,8 @@ public class DingShiRenWu {
     public static void main(String[] args) {
 
        new DingShiRenWu().f();
+
+
 
     }
 

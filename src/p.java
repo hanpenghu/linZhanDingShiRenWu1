@@ -1666,7 +1666,7 @@ public static Object StringTypeSpace2Null(Object o) throws IllegalAccessExceptio
      * */
 
 
-    public Properties readProp(String propertiesPath){
+    public static Properties readProp(String propertiesPath){
         Properties pr=new Properties();
         try {
             pr.load(new FileReader(propertiesPath));
