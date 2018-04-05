@@ -78,7 +78,11 @@ public class YunRuiDingShiRenWu {
 
     public static void main(String[]args){
         //60秒一次
-        new YunRuiDingShiRenWu().f();
+        try {
+            new YunRuiDingShiRenWu().f();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

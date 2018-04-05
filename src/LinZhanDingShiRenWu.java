@@ -562,8 +562,11 @@ public class LinZhanDingShiRenWu {
 
     public static void main(String[] args) {
 
-       new LinZhanDingShiRenWu().f();
-
+        try {
+            new LinZhanDingShiRenWu().f();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
