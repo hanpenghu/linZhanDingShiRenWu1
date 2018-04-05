@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class DingShiRenWu {
+public class LinZhanDingShiRenWu {
 
     //以下是2分钟一次
     String sql1 = "";
@@ -43,73 +43,73 @@ public class DingShiRenWu {
     String sql1011处理单独录入的采购单无币别的="";
 
 
-    public DingShiRenWu() {
+    public LinZhanDingShiRenWu() {
         InputStream resourceAsStream =null;
         try {
             //一下是30秒一次
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql1.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql1.sql");
             sql1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql2.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql2.sql");
             sql2 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql3.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql3.sql");
             sql3 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql4.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql4.sql");
             sql4 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql5.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql5.sql");
             sql5= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql6.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql6.sql");
             sql6 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql7.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql7.sql");
             sql7 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql8.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql8.sql");
             sql8 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql9.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql9.sql");
             sql9 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql10.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql10.sql");
             sql10 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql11.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql11.sql");
             sql11 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql12.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql12.sql");
             sql12 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
 
             //一下是2秒钟一次
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql101.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql101.sql");
             sql101 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql102.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql102.sql");
             sql102 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql103.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql103.sql");
             sql103 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql104.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql104.sql");
             sql104 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql105.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql105.sql");
             sql105 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql106.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql106.sql");
             sql106 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql107.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql107.sql");
             sql107 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql108.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql108.sql");
             sql108 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql109.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql109.sql");
             sql109 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql1010.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql1010.sql");
             sql1010 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
             //一下30秒一次
-            resourceAsStream = DingShiRenWu.class.getResourceAsStream("sql1011.sql");
+            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql1011.sql");
             sql1011处理单独录入的采购单无币别的= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
@@ -531,7 +531,7 @@ public class DingShiRenWu {
         //30秒一次
         Runnable runnable1 = new Runnable() {
             public void run() {
-                DingShiRenWu.this.f1();
+                LinZhanDingShiRenWu.this.f1();
             }
         };
 
@@ -539,7 +539,7 @@ public class DingShiRenWu {
         Runnable runnable2 = new Runnable() {
             public void run() {
                 // task to run goes here
-                DingShiRenWu.this.f2();
+                LinZhanDingShiRenWu.this.f2();
             }
         };
 
@@ -547,7 +547,7 @@ public class DingShiRenWu {
         Runnable runnable3 = new Runnable() {
             public void run() {
                 // task to run goes here
-                DingShiRenWu.this.f3();
+                LinZhanDingShiRenWu.this.f3();
             }
         };
 
@@ -562,7 +562,7 @@ public class DingShiRenWu {
 
     public static void main(String[] args) {
 
-       new DingShiRenWu().f();
+       new LinZhanDingShiRenWu().f();
 
 
 
