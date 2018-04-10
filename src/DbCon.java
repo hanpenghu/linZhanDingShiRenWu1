@@ -6,9 +6,19 @@ public class DbCon {
     //com.microsoft.sqlserver.jdbc.SQLServerDriver
    private static String dbName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
 //    jdbc:sqlserver://127.0.0.1:1433;DatabaseName=DB_LZ17
-    private static String dbUrl="jdbc:sqlserver://127.0.0.1:7803;DatabaseName=DB_8";//云蕊
-    private static String usr="sa";//云蕊
-    private static String pwd="c7k9r5H2w8+!@wuyishan";//云蕊
+        private static String dbUrl="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=DB_LZ17";//林展
+//    private static String dbUrl="jdbc:sqlserver://127.0.0.1:7803;DatabaseName=DB_8";//云蕊
+    private static String usr="sa";//林展
+        private static String pwd="x3g5k8h!9+guanglan@";//林展
+//    private static String pwd="c7k9r5H2w8+!@wuyishan";//云蕊
+    /**
+     *吉祥会
+     * */
+//    private static String dbName="com.mysql.jdbc.Driver";
+//    jdbc:sqlserver://127.0.0.1:1433;DatabaseName=DB_LZ17
+//    private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//    private static String usr="juhe";//
+//    private static String pwd="juheculture";//
 
     public static Connection  getCon() throws ClassNotFoundException, SQLException {
 

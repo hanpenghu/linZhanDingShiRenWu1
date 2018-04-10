@@ -8,16 +8,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class YunRuiDingShiRenWu {
+public class 云蕊定时任务 {
 
     //以下是60秒一次
     String sql1 = "";
 
-    public YunRuiDingShiRenWu() {
+    public 云蕊定时任务() {
         InputStream resourceAsStream = null;
         try {
             //一下是30秒一次
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("yunRui001.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui001.sql");
             sql1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class YunRuiDingShiRenWu {
         //60秒一次
         Runnable runnable1 = new Runnable() {
             public void run() {
-                YunRuiDingShiRenWu.this.f1();
+                云蕊定时任务.this.f1();
             }
         };
 
@@ -79,7 +79,7 @@ public class YunRuiDingShiRenWu {
     public static void main(String[]args){
         //60秒一次
         try {
-            new YunRuiDingShiRenWu().f();
+            new 云蕊定时任务().f();
         } catch (Exception e) {
             e.printStackTrace();
         }

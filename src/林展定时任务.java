@@ -9,14 +9,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class LinZhanDingShiRenWu {
+public class 林展定时任务 {
 
     //以下是2分钟一次
     String sql1 = "";
     String sql2 = "";
     String sql3 = "";
-    String sql4 = "";
-    String sql5 = "";
+//    String sql4 = "";
+//    String sql5 = "";
     String sql6 = "";
     String sql7 = "";
     String sql8 = "";
@@ -38,78 +38,91 @@ public class LinZhanDingShiRenWu {
     String sql108 = "";
     String sql109 = "";
     String sql1010 = "";
+
+    String sql1012 = "";
+    String sql1013 = "";
+    String sql1014 = "";
     //一下30秒一次
 
     String sql1011处理单独录入的采购单无币别的="";
 
 
-    public LinZhanDingShiRenWu() {
+    public 林展定时任务() {
         InputStream resourceAsStream =null;
         try {
             //一下是30秒一次
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql1.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1.sql");
             sql1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql2.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql2.sql");
             sql2 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql3.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql3.sql");
             sql3 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql4.sql");
-            sql4 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+//            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql4不用了.sql");
+//            sql4 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+//
+//            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql5不用了老郑.sql");
+//            sql5= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql5.sql");
-            sql5= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql6.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql6.sql");
             sql6 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql7.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql7.sql");
             sql7 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql8.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql8.sql");
             sql8 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql9.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql9.sql");
             sql9 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql10.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql10.sql");
             sql10 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql11.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql11.sql");
             sql11 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql12.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql12.sql");
             sql12 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
 
             //一下是2秒钟一次
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql101.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql101.sql");
             sql101 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql102.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql102.sql");
             sql102 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql103.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql103.sql");
             sql103 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql104.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql104.sql");
             sql104 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql105.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql105.sql");
             sql105 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql106.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql106.sql");
             sql106 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql107.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql107.sql");
             sql107 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql108.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql108.sql");
             sql108 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql109.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql109.sql");
             sql109 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql1010.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1010.sql");
             sql1010 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1012.sql");
+            sql1012 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1013.sql");
+            sql1013 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1014.sql");
+            sql1014 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
             //一下30秒一次
-            resourceAsStream = LinZhanDingShiRenWu.class.getResourceAsStream("sql1011.sql");
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1011.sql");
             sql1011处理单独录入的采购单无币别的= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
@@ -180,33 +193,33 @@ public class LinZhanDingShiRenWu {
             e.printStackTrace();
         }
 
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql4);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql4);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            p.p("-------------------------------------------------------");
+//            p.p(sql4);
+//            p.p("-------------------------------------------------------");
+//            p1 = c.prepareStatement(sql4);
+//            int i = p1.executeUpdate();
+//            p.p("-------------------------------------------------------");
+//            p.p(i);
+//            p.p("-------------------------------------------------------");
+//            p.p(p.nStr("\n",3));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql5);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql5);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            p.p("-------------------------------------------------------");
+//            p.p(sql5);
+//            p.p("-------------------------------------------------------");
+//            p1 = c.prepareStatement(sql5);
+//            int i = p1.executeUpdate();
+//            p.p("-------------------------------------------------------");
+//            p.p(i);
+//            p.p("-------------------------------------------------------");
+//            p.p(p.nStr("\n",3));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         try {
             p.p("-------------------------------------------------------");
@@ -295,9 +308,9 @@ public class LinZhanDingShiRenWu {
 
         try {
             p.p("-------------------------------------------------------");
-            p.p(sql2);
+            p.p(sql12);
             p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql2);
+            p1 = c.prepareStatement(sql12);
             int i = p1.executeUpdate();
             p.p("-------------------------------------------------------");
             p.p(i);
@@ -310,7 +323,7 @@ public class LinZhanDingShiRenWu {
         DbCon.closeAll(p1, null, c);
     }
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //   2秒执行一次
     public  void f2() {
@@ -493,6 +506,52 @@ public class LinZhanDingShiRenWu {
             e.printStackTrace();
         }
 
+
+        //  1012  1013  1014  2秒一次  2018_4_10   weekday(2)   14:21:17  add
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1012);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1012);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1013);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1013);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1014);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1014);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         DbCon.closeAll(p1, null, c);
     }
 
@@ -531,7 +590,7 @@ public class LinZhanDingShiRenWu {
         //30秒一次
         Runnable runnable1 = new Runnable() {
             public void run() {
-                LinZhanDingShiRenWu.this.f1();
+                林展定时任务.this.f1();
             }
         };
 
@@ -539,7 +598,7 @@ public class LinZhanDingShiRenWu {
         Runnable runnable2 = new Runnable() {
             public void run() {
                 // task to run goes here
-                LinZhanDingShiRenWu.this.f2();
+                林展定时任务.this.f2();
             }
         };
 
@@ -547,7 +606,7 @@ public class LinZhanDingShiRenWu {
         Runnable runnable3 = new Runnable() {
             public void run() {
                 // task to run goes here
-                LinZhanDingShiRenWu.this.f3();
+                林展定时任务.this.f3();
             }
         };
 
@@ -563,7 +622,7 @@ public class LinZhanDingShiRenWu {
     public static void main(String[] args) {
 
         try {
-            new LinZhanDingShiRenWu().f();
+            new 林展定时任务().f();
         } catch (Exception e) {
             e.printStackTrace();
         }
