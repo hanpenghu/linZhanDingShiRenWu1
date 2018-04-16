@@ -42,10 +42,11 @@ public class 林展定时任务 {
     String sql1012 = "";
     String sql1013 = "";
     String sql1014 = "";
+
+
     //一下30秒一次
-
     String sql1011处理单独录入的采购单无币别的="";
-
+    String sql13_30Second="";
 
     public 林展定时任务() {
         InputStream resourceAsStream =null;
@@ -88,6 +89,8 @@ public class 林展定时任务 {
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql12.sql");
             sql12 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql13_30Second.sql");
+            sql13_30Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
             //一下是2秒钟一次
@@ -319,6 +322,21 @@ public class 林展定时任务 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql13_30Second);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql13_30Second);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         DbCon.closeAll(p1, null, c);
     }
@@ -590,7 +608,10 @@ public class 林展定时任务 {
         //30秒一次
         Runnable runnable1 = new Runnable() {
             public void run() {
+
                 林展定时任务.this.f1();
+
+
             }
         };
 
