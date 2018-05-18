@@ -3,8 +3,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +46,7 @@ public class 林展定时任务 {
     //一下30秒一次
     String sql1011处理单独录入的采购单无币别的="";
     String sql13_30Second="";
+    String sql14_30second="";//老郑的16
 
     public 林展定时任务() {
         InputStream resourceAsStream =null;
@@ -127,6 +127,10 @@ public class 林展定时任务 {
             //一下30秒一次
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1011.sql");
             sql1011处理单独录入的采购单无币别的= IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql14_30second.sql");
+            sql14_30second=IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -142,15 +146,17 @@ public class 林展定时任务 {
 
 
 
-    //1到12   30秒执行一次
+//2分钟一次
     public  void f1() {
         Connection c = null;
         PreparedStatement p1 =null;
         try {
-            c = DbCon.getCon();
+            c = this.getCon();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //
 
 
         //
@@ -348,7 +354,7 @@ public class 林展定时任务 {
         Connection c = null;
         PreparedStatement p1 =null;
         try {
-            c = DbCon.getCon();
+            c = this.getCon();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -573,17 +579,30 @@ public class 林展定时任务 {
         DbCon.closeAll(p1, null, c);
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////30秒一次//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public  void f3() {
 
         Connection c = null;
         PreparedStatement p1 =null;
         try {
-            c = DbCon.getCon();
+            c = this.getCon();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql14_30second);//老郑的16
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql14_30second);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //
         try {
@@ -605,7 +624,7 @@ public class 林展定时任务 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void f() {
 
-        //30秒一次
+        //2分钟一次
         Runnable runnable1 = new Runnable() {
             public void run() {
 
@@ -651,5 +670,91 @@ public class 林展定时任务 {
 
     }
 
+    //com.microsoft.sqlserver.jdbc.SQLServerDriver
+    private static String dbName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    //    jdbc:sqlserver://127.0.0.1:1433;DatabaseName=DB_LZ17
+        private static String dbUrl="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=DB_LZ17";//林展
+//    private static String dbUrl="jdbc:sqlserver://127.0.0.1:7803;DatabaseName=DB_8";//云蕊
+    private static String usr="sa";//林展
+            private static String pwd="x3g5k8h!9+guanglan@";//林展
+//    private static String pwd="c7k9r5H2w8+!@wuyishan";//云蕊
+    /**
+     *吉祥会
+     * */
+//    private static String dbName="com.mysql.jdbc.Driver";
+//    jdbc:sqlserver://127.0.0.1:1433;DatabaseName=DB_LZ17
+//    private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//    private static String usr="juhe";//
+//    private static String pwd="juheculture";//
 
+    public static Connection  getCon() throws ClassNotFoundException, SQLException {
+
+        //未打包之前读这个,因为没有打包,所以srcPath是可以读到的,打了包就读不到jar包里面了
+//        Properties pr = p.readProp(p.srcPath()+"DBConfig.properties");
+        //打包后用这个,然后把DBConfig.properties放在jar包外面,因为这样就直接读到了classpath路径下面的东西
+        /*Properties pr = p.readProp("DBConfig.properties");
+        p.p(p.str2Log(pr.getProperty("dbName")));
+        dbName=pr.getProperty("dbName");
+        dbUrl=pr.getProperty("dbUrl");
+        usr=pr.getProperty("userName");
+        pwd=pr.getProperty("pwd");*/
+        Class.forName(dbName);
+//        String url="jdbc:sqlserver://61.177.44.218:1433;DatabaseName=DB_LZ17";
+//        String url=dbUrl;
+//        //mydb为数据库
+//        String user=usr;//"sa";
+//        String password=pwd;//"x3g5k8h!9+guanglan@";
+        Connection conn= DriverManager.getConnection(dbUrl,usr,pwd);
+        if(p.empty(conn)){
+            return null;
+        }else{
+            return conn;
+        }
+    }
+
+    public static void conClose(Connection c) throws SQLException {
+        if(p.notEmpty(c)){
+            c.close();
+        }else{
+
+        }
+
+    }
+
+    public static void resultSetClose(ResultSet c) throws SQLException {
+        if(p.notEmpty(c)){
+            c.close();
+        }else{
+
+        }
+
+    }
+
+    public static void preparedStatementClose(PreparedStatement c) throws SQLException {
+        if(p.notEmpty(c)){
+            c.close();
+        }else{
+
+        }
+
+    }
+
+
+    public static void closeAll(PreparedStatement p1,ResultSet r,Connection c){
+        try {
+            DbCon.preparedStatementClose(p1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            DbCon.resultSetClose(r);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            DbCon.conClose(c);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

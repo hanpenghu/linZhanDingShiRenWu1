@@ -46,7 +46,8 @@ public class 云蕊定时任务 {
 
 
     //以下是60秒一次
-    String sql1 = "";
+    String sql01 = "";
+    String sql02 = "";
 
     //120秒一次
     String sql2="";
@@ -58,7 +59,11 @@ public class 云蕊定时任务 {
 
             //60秒一次
             resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui001_60Second.sql");
-            sql1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+            sql01 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui002_60Second.sql");
+            sql02 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+
             //120秒一次
             resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui002_120Second.sql");
             sql2 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
@@ -93,9 +98,9 @@ public class 云蕊定时任务 {
         //
         try {
             p.p("-----------------yunRui001_60Second.sql--------------------------------------");
-            p.p(sql1);
+            p.p(sql01);
             p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1);
+            p1 = c.prepareStatement(sql01);
             int i = p1.executeUpdate();
             p.p("-------------------------------------------------------");
             p.p(i);
@@ -105,6 +110,25 @@ public class 云蕊定时任务 {
             e.printStackTrace();
         }
 
+        try {
+            p.p("-----------------yunRui002_60Second.sql--------------------------------------");
+            p.p(sql02);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql02);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            c.close();
+            p1.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -149,7 +173,12 @@ public class 云蕊定时任务 {
             e.printStackTrace();
         }
 
-
+        try {
+            c.close();
+            p1.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
