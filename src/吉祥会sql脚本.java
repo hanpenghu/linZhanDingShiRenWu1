@@ -13,14 +13,14 @@ public class 吉祥会sql脚本 {
 
 
 //
-//private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
     private static String usr="juhe";//
     private static String pwd="root";//
 
 
 
 //
-    private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//    private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
 //    private static String usr="root";//
 //    private static String pwd="root";//
     private static Connection getCon() throws SQLException, ClassNotFoundException {
@@ -111,6 +111,16 @@ public class 吉祥会sql脚本 {
         } catch (Exception e) {
             p.p(p.str2Log("ALTER TABLE luxclub_mobile_steward_summary ADD guan_xi VARCHAR(500) comment '关系'","已经存在"));
         }
+
+        try {
+            p1 = c.prepareStatement("alter table luxclub_order modify column order_code varchar(50)");
+            boolean b = p1.execute();
+            p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(50)","执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(50)","已经存在"));
+        }
+
         DbCon.closeAll(p1,null,c);
     }
 
