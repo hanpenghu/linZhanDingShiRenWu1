@@ -7,20 +7,20 @@ public class 吉祥会sql脚本 {
     private static String dbName="com.mysql.jdbc.Driver";
     //正式线
 //        private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
-//
+
 //    private static String usr="juhe";//
 //    private static String pwd="juheculture";//
 
 
 //
-private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
     private static String usr="juhe";//
     private static String pwd="root";//
 
 
 
 //
-//    private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+    private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
 //    private static String usr="root";//
 //    private static String pwd="root";//
     private static Connection getCon() throws SQLException, ClassNotFoundException {
@@ -119,6 +119,18 @@ private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=t
 
         } catch (Exception e) {
             p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(50)","已经存在"));
+        }
+
+
+
+        String sql001="alter table luxclub_member_info modify column interest varchar(2000)";
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
         }
 
         DbCon.closeAll(p1,null,c);
