@@ -196,7 +196,7 @@ public class 林展定时任务 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        DbCon.closeAll(p1, null, c);
 
     }
 
@@ -205,7 +205,7 @@ public class 林展定时任务 {
 
 
 //2分钟一次
-    public  void f1() {
+    public  void a2分钟一次() {
         Connection c = null;
         PreparedStatement p1 =null;
         try {
@@ -408,7 +408,7 @@ public class 林展定时任务 {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //   2秒执行一次
-    public  void f2() {
+    public  void a2秒钟一次() {
         Connection c = null;
         PreparedStatement p1 =null;
         try {
@@ -638,7 +638,7 @@ public class 林展定时任务 {
     }
 
     ////////////30秒一次//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public  void f3() {
+    public  void a30秒一次() {
 
         Connection c = null;
         PreparedStatement p1 =null;
@@ -676,7 +676,7 @@ public class 林展定时任务 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        DbCon.closeAll(p1, null, c);
 
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -694,36 +694,36 @@ public class 林展定时任务 {
         };
 
         //2分钟一次
-        Runnable runnable1 = new Runnable() {
+        Runnable runnable2分钟一次 = new Runnable() {
             public void run() {
 
-                林展定时任务.this.f1();
+                林展定时任务.this.a2分钟一次();
 
 
             }
         };
 
         //2秒一次
-        Runnable runnable2 = new Runnable() {
+        Runnable runable2秒一次 = new Runnable() {
             public void run() {
                 // task to run goes here
-                林展定时任务.this.f2();
+                林展定时任务.this.a2秒钟一次();
             }
         };
 
         //30秒一次//
-        Runnable runnable3 = new Runnable() {
+        Runnable runnable30秒一次 = new Runnable() {
             public void run() {
                 // task to run goes here
-                林展定时任务.this.f3();
+                林展定时任务.this.a30秒一次();
             }
         };
 
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
-        service.scheduleAtFixedRate(runnable1, 10, 120, TimeUnit.SECONDS);
-        service.scheduleAtFixedRate(runnable2, 5, 2, TimeUnit.SECONDS);
-        service.scheduleAtFixedRate(runnable3, 3, 30, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable2分钟一次, 10, 120, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runable2秒一次, 5, 2, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable30秒一次, 3, 30, TimeUnit.SECONDS);
         service.scheduleAtFixedRate(a60秒一次run, 7, 60, TimeUnit.SECONDS);
     }
 
