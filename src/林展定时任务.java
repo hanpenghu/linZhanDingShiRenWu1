@@ -48,9 +48,16 @@ public class 林展定时任务 {
     String sql13_30Second="";
     String sql14_30second="";//老郑的16
 
+
+    String sql004_60Second="";
+    String sql017_60Second="";
     public 林展定时任务() {
         InputStream resourceAsStream =null;
         try {
+
+
+
+
             //一下是30秒一次
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1.sql");
             sql1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
@@ -131,6 +138,13 @@ public class 林展定时任务 {
 
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql14_30second.sql");
             sql14_30second=IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql004_60Second.sql");
+            sql004_60Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql017_60Second.sql");
+            sql017_60Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -140,6 +154,50 @@ public class 林展定时任务 {
                 e.printStackTrace();
             }
         }
+    }
+
+
+
+    public  void a60秒一次() {
+
+        Connection c = null;
+        PreparedStatement p1 =null;
+        try {
+            c = this.getCon();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            p.p("------------------------------004 处理默认鸿运仓库 60秒----------------------------");
+            p.p(sql004_60Second);//老郑的16
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql004_60Second);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //
+        try {
+            p.p("-------------------017.纱线货品批号管制自动打钩 以下按次序60秒执行一次--------------------------------------");
+            p.p(sql017_60Second);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql017_60Second);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
@@ -624,6 +682,17 @@ public class 林展定时任务 {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void f() {
 
+        //a60秒一次()
+
+        Runnable a60秒一次run = new Runnable() {
+            public void run() {
+
+                林展定时任务.this.a60秒一次();
+
+
+            }
+        };
+
         //2分钟一次
         Runnable runnable1 = new Runnable() {
             public void run() {
@@ -654,7 +723,8 @@ public class 林展定时任务 {
         // 第二个参数为首次执行的延时时间，第三个参数为定时执行的间隔时间
         service.scheduleAtFixedRate(runnable1, 10, 120, TimeUnit.SECONDS);
         service.scheduleAtFixedRate(runnable2, 5, 2, TimeUnit.SECONDS);
-        service.scheduleAtFixedRate(runnable3, 1, 30, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(runnable3, 3, 30, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(a60秒一次run, 7, 60, TimeUnit.SECONDS);
     }
 
 

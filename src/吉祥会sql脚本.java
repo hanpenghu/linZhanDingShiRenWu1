@@ -8,19 +8,12 @@ public class 吉祥会sql脚本 {
     //正式线
 //        private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
 
-//    private static String usr="juhe";//
-//    private static String pwd="juheculture";//
 
-
-//
-//private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
-    private static String usr="juhe";//
-    private static String pwd="root";//
 
 
 
 //
-    private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//    private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
 //    private static String usr="root";//
 //    private static String pwd="root";//
     private static Connection getCon() throws SQLException, ClassNotFoundException {
@@ -113,12 +106,12 @@ public class 吉祥会sql脚本 {
         }
 
         try {
-            p1 = c.prepareStatement("alter table luxclub_order modify column order_code varchar(50)");
+            p1 = c.prepareStatement("alter table luxclub_order modify column order_code varchar(300)");
             boolean b = p1.execute();
-            p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(50)","执行成功"));
+            p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(300)","执行成功"));
 
         } catch (Exception e) {
-            p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(50)","已经存在"));
+            p.p(p.str2Log("alter table luxclub_order modify column order_code varchar(300)","已经存在"));
         }
 
 
@@ -133,12 +126,40 @@ public class 吉祥会sql脚本 {
             p.p(p.str2Log(sql001,"已经存在"));
         }
 
+
+        sql001="alter table luxclub_order add  mobile_steward_receive_order_time datetime";
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
+
+        sql001="alter table luxclub_order add  mobile_steward_complete_order_time datetime";
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
         DbCon.closeAll(p1,null,c);
     }
 
 
 
+        private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//    private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//            private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
 
+        private static String usr="juhe";//
+//    private static String pwd="juheculture";//
+
+//    private static String usr="juhe";//
+    private static String pwd="root";//
     public static void main(String[]args){
 
             f();

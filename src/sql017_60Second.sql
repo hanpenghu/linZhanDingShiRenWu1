@@ -1,0 +1,1 @@
+update prdt set chk_bat='T' where idx1 like '33%' and chk_bat='F'
