@@ -35,9 +35,9 @@ public class 吉祥会sql脚本 {
         }
 
 
-        //
+        //订单备注会员不可见//其他要求reserve_require是会员可见
         try {
-            p1 = c.prepareStatement("ALTER TABLE luxclub_order ADD order_rem VARCHAR(1000) COMMENT '订单备注'");
+            p1 = c.prepareStatement("ALTER TABLE luxclub_order ADD order_rem VARCHAR(1000) COMMENT '订单备注(会员不可见)'");
             boolean b = p1.execute();
             p.p(p.str2Log("ALTER TABLE luxclub_order ADD order_rem VARCHAR(1000) COMMENT '订单备注'","执行成功"));
         } catch (Exception e) {
@@ -127,7 +127,8 @@ public class 吉祥会sql脚本 {
         }
 
 
-        sql001="alter table luxclub_order add  mobile_steward_receive_order_time datetime";
+        //添加移动管家待接单时间
+        sql001="alter table luxclub_order add  mobile_steward_receive_order_time datetime comment '移动管家已经接单时间'";
         try {
             p1 = c.prepareStatement(sql001);
             boolean b = p1.execute();
@@ -137,7 +138,8 @@ public class 吉祥会sql脚本 {
             p.p(p.str2Log(sql001,"已经存在"));
         }
 
-        sql001="alter table luxclub_order add  mobile_steward_complete_order_time datetime";
+        //添加移动管家已完成时间
+        sql001="alter table luxclub_order add  mobile_steward_complete_order_time datetime comment '移动管家已完成时间'" ;
         try {
             p1 = c.prepareStatement(sql001);
             boolean b = p1.execute();
@@ -146,6 +148,48 @@ public class 吉祥会sql脚本 {
         } catch (Exception e) {
             p.p(p.str2Log(sql001,"已经存在"));
         }
+
+
+        //消费成本
+        sql001="alter table luxclub_order add  cheng_ben varchar(1000) comment '消费成本'" ;
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
+
+
+        //单据上传人
+        sql001="alter table luxclub_order add  dan_ju_shang_chuan_ren varchar(55) comment '单据上传人'" ;
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
+
+
+        //成本图片上传的url
+        sql001="alter table luxclub_order add  cheng_ben_url varchar(1000) comment '成本图片上传后储存的url'" ;
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
+
+
+
+
+
+
         DbCon.closeAll(p1,null,c);
     }
 
