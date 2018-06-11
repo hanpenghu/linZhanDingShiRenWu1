@@ -163,7 +163,7 @@ public class 吉祥会sql脚本 {
 
 
         //单据上传人
-        sql001="alter table luxclub_order add  dan_ju_shang_chuan_ren varchar(55) comment '单据上传人'" ;
+        sql001="alter table luxclub_order add  dan_ju_shang_chuan_ren varchar(55) comment '单据上传人(成本和消费是同时上传的)'" ;
         try {
             p1 = c.prepareStatement(sql001);
             boolean b = p1.execute();
@@ -173,6 +173,16 @@ public class 吉祥会sql脚本 {
             p.p(p.str2Log(sql001,"已经存在"));
         }
 
+        //单据上传时间
+        sql001="alter table luxclub_order add  dan_ju_shang_chuan_time datetime comment '单据上传时间(成本和消费是同时上传的)'" ;
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
 
         //成本图片上传的url
         sql001="alter table luxclub_order add  cheng_ben_url varchar(1000) comment '成本图片上传后储存的url'" ;
