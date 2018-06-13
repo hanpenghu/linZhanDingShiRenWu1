@@ -54,6 +54,18 @@ public class 吉祥会sql脚本 {
         }
 
 
+        String sqlxx="ALTER TABLE luxclub_order ADD cut_money_man VARCHAR(50) comment '财务扣款人'";
+        try {
+            p1 = c.prepareStatement(sqlxx);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sqlxx,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sqlxx,"已经存在"));
+        }
+
+
+
         try {
             p1 = c.prepareStatement("ALTER TABLE luxclub_order ADD order_confirm_man VARCHAR(26) comment '订单确认人'");
             boolean b = p1.execute();
@@ -199,21 +211,22 @@ public class 吉祥会sql脚本 {
 
 
 
-
         DbCon.closeAll(p1,null,c);
     }
 
 
 
-        private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//        private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//private static String usr="juhe";//
+//    private static String pwd="root";//
 //    private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
-//            private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
-
-        private static String usr="juhe";//
-//    private static String pwd="juheculture";//
-
 //    private static String usr="juhe";//
-    private static String pwd="root";//
+//    private static String pwd="root";//
+private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+        private static String usr="juhe";//
+ private static String pwd="juheculture";//
+
+
     public static void main(String[]args){
 
             f();
