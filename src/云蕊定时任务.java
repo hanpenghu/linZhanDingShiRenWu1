@@ -53,6 +53,9 @@ public class 云蕊定时任务 {
     String sql2="";
     String sql3="";
 
+    String sql004_1="";
+    String sql004_2="";
+
     public 云蕊定时任务() {
         InputStream resourceAsStream = null;
         try {
@@ -69,6 +72,12 @@ public class 云蕊定时任务 {
             sql2 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui003_120Second.sql");
             sql3 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui004_1_120Second.sql");
+            sql004_1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("yunRui004_2_120Second.sql");
+            sql004_2 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
         } catch (Exception e) {
@@ -164,6 +173,34 @@ public class 云蕊定时任务 {
             p.p(sql3);
             p.p("-------------------------------------------------------");
             p1 = c.prepareStatement(sql3);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            p.p("-----------------yunRui003_120Second.sql--------------------------------------");
+            p.p(sql004_1);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql004_1);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            p.p("-----------------yunRui003_120Second.sql--------------------------------------");
+            p.p(sql004_2);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql004_2);
             int i = p1.executeUpdate();
             p.p("-------------------------------------------------------");
             p.p(i);

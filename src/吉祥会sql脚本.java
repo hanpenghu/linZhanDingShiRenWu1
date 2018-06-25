@@ -208,7 +208,28 @@ public class 吉祥会sql脚本 {
         }
 
 
+        //添加订单的时候如果是酒店出行的需要添加房晚整型字段,而且必须添加
+        sql001="alter table luxclub_order add  fang_wan varchar(16) comment '添加订单的时候如果是酒店出行的需要添加房晚整型字段'" ;
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
 
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
+
+
+        //添加订单为高尔夫的时候必须添加场次字段,整数必填
+        sql001="alter table luxclub_order add  golf_chang_ci varchar(10) comment '添加订单为高尔夫的时候必须添加场次字段,整数必填'" ;
+        try {
+            p1 = c.prepareStatement(sql001);
+            boolean b = p1.execute();
+            p.p(p.str2Log(sql001,"执行成功"));
+
+        } catch (Exception e) {
+            p.p(p.str2Log(sql001,"已经存在"));
+        }
 
 
         DbCon.closeAll(p1,null,c);
@@ -216,15 +237,15 @@ public class 吉祥会sql脚本 {
 
 
 
-//        private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
-//private static String usr="juhe";//
-//    private static String pwd="root";//
+        private static String dbUrl="jdbc:mysql://127.0.0.1:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+private static String usr="juhe";//
+    private static String pwd="root";//
 //    private static String dbUrl="jdbc:mysql://47.98.45.100:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
 //    private static String usr="juhe";//
 //    private static String pwd="root";//
-private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
-        private static String usr="juhe";//
- private static String pwd="juheculture";//
+//private static String dbUrl="jdbc:mysql://121.40.221.152:3306/luxclub?useUnicode=true&characterEncoding=utf-8";
+//        private static String usr="juhe";//
+// private static String pwd="juheculture";//
 
 
     public static void main(String[]args){
