@@ -12,6 +12,7 @@ public class 林展定时任务 {
 
     //以下是2分钟一次
     String sql1 = "";
+    String sql1_1 = "";
     String sql2 = "";
     String sql3 = "";
 //    String sql4 = "";
@@ -61,6 +62,9 @@ public class 林展定时任务 {
             //一下是30秒一次
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1.sql");
             sql1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1_1.sql");
+            sql1_1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql2.sql");
             sql2 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
@@ -223,6 +227,21 @@ public class 林展定时任务 {
             p.p(sql1);
             p.p("-------------------------------------------------------");
              p1 = c.prepareStatement(sql1);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1_1);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1_1);
             int i = p1.executeUpdate();
             p.p("-------------------------------------------------------");
             p.p(i);
