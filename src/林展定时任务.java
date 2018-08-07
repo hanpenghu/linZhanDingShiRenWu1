@@ -39,6 +39,7 @@ public class 林展定时任务 {
     String sql109 = "";
     String sql1010 = "";
 
+    String sql1012_1 = "";
     String sql1012 = "";
     String sql1013 = "";
     String sql1014 = "";
@@ -126,14 +127,20 @@ public class 林展定时任务 {
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1010.sql");
             sql1010 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
+
+            //1012_1  1012 1013 1014是一组老郑说的  ---011处理主副单位换算 以下按次序2秒执行一次
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1012_1.sql");
+            sql1012_1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1012.sql");
             sql1012 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1013.sql");
             sql1013 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
-
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1014.sql");
             sql1014 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+
+
+
+
 
             //一下30秒一次
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1011.sql");
@@ -608,7 +615,22 @@ public class 林展定时任务 {
         }
 
 
-        //  1012  1013  1014  2秒一次  2018_4_10   weekday(2)   14:21:17  add
+        //  1012_1 1012  1013  1014  2秒一次  2018_4_10   weekday(2)   14:21:17  add
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1012_1);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1012_1);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         try {
             p.p("-------------------------------------------------------");
             p.p(sql1012);
