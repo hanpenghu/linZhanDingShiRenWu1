@@ -24,13 +24,13 @@ public class 林展定时任务 {
     String sql10 = "";
     String sql11 = "";
     String sql12 = "";
-
+    String sql004_120Second="";
 
     //一下是2秒钟一次
 
-    String sql101 = "";
+  /*  String sql101 = "";
     String sql102 = "";
-    String sql103 = "";
+    String sql103 = "";*/
     String sql104 = "";
     String sql105 = "";
     String sql106 = "";
@@ -39,7 +39,7 @@ public class 林展定时任务 {
     String sql109 = "";
     String sql1010 = "";
 
-    String sql1012_1 = "";
+//    String sql1012_1 = "";
     String sql1012 = "";
     String sql1013 = "";
     String sql1014 = "";
@@ -51,8 +51,7 @@ public class 林展定时任务 {
     String sql14_30second="";//老郑的16
 
 
-    String sql004_60Second="";
-    String sql017_60Second="";
+    String sql017_120Second="";
     public 林展定时任务() {
         InputStream resourceAsStream =null;
         try {
@@ -101,17 +100,17 @@ public class 林展定时任务 {
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql12.sql");
             sql12 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql13_30Second.sql");
-            sql13_30Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+//            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql13_30Second.sql");
+//            sql13_30Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
             //一下是2秒钟一次
-            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql101.sql");
+          /*  resourceAsStream = 林展定时任务.class.getResourceAsStream("sql101.sql");
             sql101 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql102.sql");
             sql102 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql103.sql");
-            sql103 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+            sql103 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();*/
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql104.sql");
             sql104 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql105.sql");
@@ -129,8 +128,8 @@ public class 林展定时任务 {
 
 
             //1012_1  1012 1013 1014是一组老郑说的  ---011处理主副单位换算 以下按次序2秒执行一次
-            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1012_1.sql");
-            sql1012_1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+//            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1012_1.sql");
+//            sql1012_1 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1012.sql");
             sql1012 = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
             resourceAsStream = 林展定时任务.class.getResourceAsStream("sql1013.sql");
@@ -151,11 +150,11 @@ public class 林展定时任务 {
             sql14_30second=IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
 
-            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql004_60Second.sql");
-            sql004_60Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql004_120Second.sql");
+            sql004_120Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
 
-            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql017_60Second.sql");
-            sql017_60Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
+            resourceAsStream = 林展定时任务.class.getResourceAsStream("sql017_120Second.sql");
+            sql017_120Second = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8).trim();
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -180,10 +179,10 @@ public class 林展定时任务 {
         }
 
         try {
-            p.p("------------------------------004 处理默认鸿运仓库 60秒----------------------------");
-            p.p(sql004_60Second);//老郑的16
             p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql004_60Second);
+            p.p(sql1012);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1012);
             int i = p1.executeUpdate();
             p.p("-------------------------------------------------------");
             p.p(i);
@@ -193,12 +192,12 @@ public class 林展定时任务 {
             e.printStackTrace();
         }
 
-        //
+
         try {
-            p.p("-------------------017.纱线货品批号管制自动打钩 以下按次序60秒执行一次--------------------------------------");
-            p.p(sql017_60Second);
             p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql017_60Second);
+            p.p(sql1013);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1013);
             int i = p1.executeUpdate();
             p.p("-------------------------------------------------------");
             p.p(i);
@@ -207,6 +206,23 @@ public class 林展定时任务 {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1014);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1014);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         DbCon.closeAll(p1, null, c);
 
     }
@@ -224,9 +240,61 @@ public class 林展定时任务 {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        try {
+            p.p("-----------------sql1011.sql--------------------------------------");
+            p.p(sql1011处理单独录入的采购单无币别的);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1011处理单独录入的采购单无币别的);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql109);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql109);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1010);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1010);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            p.p("------------------------------004 处理默认鸿运仓库 120秒--2分钟--------------------------");
+            p.p(sql004_120Second);//老郑的16
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql004_120Second);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //
         try {
@@ -413,7 +481,9 @@ public class 林展定时任务 {
             e.printStackTrace();
         }
 
-        try {
+
+        //重复不用了
+       /* try {
             p.p("-------------------------------------------------------");
             p.p(sql13_30Second);
             p.p("-------------------------------------------------------");
@@ -425,8 +495,21 @@ public class 林展定时任务 {
             p.p(p.nStr("\n",3));
         } catch (Exception e) {
             e.printStackTrace();
+        }*/
+        //
+        try {
+            p.p("-------------------017.纱线货品批号管制自动打钩 以下按次序60秒执行一次--------------------------------------");
+            p.p(sql017_120Second);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql017_120Second);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
 
         DbCon.closeAll(p1, null, c);
     }
@@ -435,6 +518,8 @@ public class 林展定时任务 {
 
     //   2秒执行一次
     public  void a2秒钟一次() {
+
+
         Connection c = null;
         PreparedStatement p1 =null;
         try {
@@ -445,7 +530,7 @@ public class 林展定时任务 {
 
 
         //
-        try {
+      /*  try {
             p.p("-------------------------------------------------------");
             p.p(sql101);
             p.p("-------------------------------------------------------");
@@ -457,9 +542,9 @@ public class 林展定时任务 {
             p.p(p.nStr("\n",3));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
-        try {
+       /* try {
             p.p("-------------------------------------------------------");
             p.p(sql102);
             p.p("-------------------------------------------------------");
@@ -471,9 +556,9 @@ public class 林展定时任务 {
             p.p(p.nStr("\n",3));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
-        try {
+        /*try {
             p.p("-------------------------------------------------------");
             p.p(sql103);
             p.p("-------------------------------------------------------");
@@ -483,6 +568,69 @@ public class 林展定时任务 {
             p.p(i);
             p.p("-------------------------------------------------------");
             p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+
+
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql11);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql11);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            p.p("-------------------------------------------------------");
+            p.p(sql2);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql2);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        //  1012_1 1012  1013  1014  2秒一次  2018_4_10   weekday(2)   14:21:17  add
+
+        /*try {
+            p.p("-------------------------------------------------------");
+            p.p(sql1012_1);
+            p.p("-------------------------------------------------------");
+            p1 = c.prepareStatement(sql1012_1);
+            int i = p1.executeUpdate();
+            p.p("-------------------------------------------------------");
+            p.p(i);
+            p.p("-------------------------------------------------------");
+            p.p(p.nStr("\n",3));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+
+
+        DbCon.closeAll(p1, null, c);
+    }
+
+
+    public void a6SecondOnce(){
+        Connection c = null;
+        PreparedStatement p1 =null;
+        try {
+            c = this.getCon();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -558,122 +706,6 @@ public class 林展定时任务 {
             e.printStackTrace();
         }
 
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql109);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql109);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql1010);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1010);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql11);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql11);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql2);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql2);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        //  1012_1 1012  1013  1014  2秒一次  2018_4_10   weekday(2)   14:21:17  add
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql1012_1);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1012_1);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql1012);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1012);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql1013);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1013);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        try {
-            p.p("-------------------------------------------------------");
-            p.p(sql1014);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1014);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         DbCon.closeAll(p1, null, c);
     }
@@ -704,19 +736,7 @@ public class 林展定时任务 {
         }
 
         //
-        try {
-            p.p("-----------------sql1011.sql--------------------------------------");
-            p.p(sql1011处理单独录入的采购单无币别的);
-            p.p("-------------------------------------------------------");
-            p1 = c.prepareStatement(sql1011处理单独录入的采购单无币别的);
-            int i = p1.executeUpdate();
-            p.p("-------------------------------------------------------");
-            p.p(i);
-            p.p("-------------------------------------------------------");
-            p.p(p.nStr("\n",3));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         DbCon.closeAll(p1, null, c);
 
     }
@@ -733,7 +753,12 @@ public class 林展定时任务 {
 
             }
         };
+        Runnable a6秒一次run = new Runnable() {
+            public void run() {
+                林展定时任务.this.a6SecondOnce();
 
+            }
+        };
         //2分钟一次
         Runnable runnable2分钟一次 = new Runnable() {
             public void run() {
@@ -766,6 +791,7 @@ public class 林展定时任务 {
         service.scheduleAtFixedRate(runable2秒一次, 5, 2, TimeUnit.SECONDS);
         service.scheduleAtFixedRate(runnable30秒一次, 3, 30, TimeUnit.SECONDS);
         service.scheduleAtFixedRate(a60秒一次run, 7, 60, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(a6秒一次run, 8, 6, TimeUnit.SECONDS);
     }
 
 

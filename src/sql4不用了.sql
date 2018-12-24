@@ -1,1 +1,1 @@
-update  tf_pos set wh='1000' where os_id='PO' AND wh='00000000'
+-- update  tf_pos set wh='1000' where os_id='PO' AND wh='00000000'
